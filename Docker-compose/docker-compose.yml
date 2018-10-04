@@ -1,0 +1,17 @@
+version: "2"
+services:
+    affablebean-db:
+        image: mysql
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_DATABASE: employees_partitioned_5.1
+            MYSQL_USER: employees_partitioned_5.1
+            MYSQL_PASSWORD: nbuser
+            MYSQL_ROOT_PASSWORD: test
+        volumes:
+            - ./dump:/docker-entrypoint-initdb.d
+            - persistent:/var/lib/mysql
+
+volumes:
+    ? persistent
